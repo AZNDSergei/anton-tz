@@ -1,0 +1,28 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  padding: 100px;
+  padding-top: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.menu {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}

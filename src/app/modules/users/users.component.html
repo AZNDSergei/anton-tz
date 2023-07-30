@@ -1,0 +1,36 @@
+<div [formGroup]="filters">
+  <div class="input-group justify-content-between">
+    <div class="mb-4 col-6">
+      <label for="searchText" class="form-label">Search Text:</label>
+      <input class="form-control" id="searchText" type="text" formControlName="searchText" />
+    </div>
+    <div class="mb-3 col-3">
+      <label for="limit" class="form-label">Choose limit:</label>
+      <select class="form-select" id="limit" formControlName="limit">
+        <option *ngFor="let limit of limits" [value]="limit">{{ limit }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="users$ | async as users">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td [innerHtml]="user.firstName | highlight: filters.get('searchText')?.value"></td>
+        <td [innerHtml]="user.lastName | highlight: filters.get('searchText')?.value"></td>
+        <td
+          [innerHtml]="
+            user.email | asterisked: 5 | highlight: filters.get('searchText')?.value
+          "></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
